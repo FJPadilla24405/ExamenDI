@@ -2,6 +2,9 @@ package modelos;
 
 import java.util.List;
 
+/**
+ * Clase que representa un usuario
+ */
 public class Usuario {
 	
 	private String nombre;

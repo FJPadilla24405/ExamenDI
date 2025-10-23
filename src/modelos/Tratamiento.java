@@ -2,6 +2,9 @@ package modelos;
 
 import java.util.Date;
 
+/**
+ * Clase que representa un tratamiento
+ */
 public class Tratamiento {
 	
 	Medicamento medicamento;
@@ -10,6 +13,7 @@ public class Tratamiento {
 	int comprimidos;
 	int horas;
 	
+	public Tratamiento() {};
 	
 	public Tratamiento(Medicamento medicamento, Date fechaInicio, Date fechaFin, int comprimidos, int horas) {
 		super();

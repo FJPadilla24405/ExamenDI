@@ -1,38 +1,61 @@
 package utils;
 
 import java.util.ArrayList;
-
-import javax.swing.JPanel;
+import java.util.Date;
+import java.util.List;
 
 import modelos.Medicamento;
+import modelos.TipoMedicamento;
+import modelos.Tratamiento;
 import modelos.Usuario;
 
+/**
+ * Clase controladora de la pantalla principal
+ * @author Padilla
+ */
 public class ControladorMainScreen {
 	
+	/**
+	* Lista de usuarios de la aplicacion
+	*/
 	public static ArrayList<Usuario> usuarios = new ArrayList<>();
+	
+	/**
+	 * Lista de medicamento de la aplicacion
+	 */
 	public static ArrayList<Medicamento> medicamentos = new ArrayList<>();
 	
-	public static void colorBase(JPanel panel) {
-		panel.setBackground(new java.awt.Color(240, 230, 140));
-	}
+	/**
+	 * Usuario que se ha logeado y esta usando la aplicacion
+	 */
+	public static Usuario currentUser;
 	
-	public static void colorFocus(JPanel panel) {
-		panel.setBackground(new java.awt.Color(227, 209, 48));
-	}
+	private static List<Tratamiento> tratamientos = new ArrayList<>();
 	
-	public static void colorClick(JPanel panel) {
-		panel.setBackground(new java.awt.Color(218, 165, 32));
-	}
-	
+	/**
+	 * Inicializa las listas de usuarios y medicamentos con datos
+	 */
+	@SuppressWarnings("deprecation")
 	public static void inicializarArrayLists() {
 		
-		for(int i = 1; i <= 5; i++) {
+		for(int i = 0; i < 4; i++) {
+			Medicamento medicamento = new Medicamento("Medicamento"+i, "Laboratorio"+i, TipoMedicamento.values()[i], "Descripcion"+i);
+			medicamentos.add(medicamento);
+			Tratamiento tratamiento = new Tratamiento();
+			tratamiento.setMedicamento(medicamentos.get(i));
+			tratamiento.setFechaInicio(new Date(2025, 10, i));
+			tratamiento.setFechaFin(new Date(2025, 11, i*2));
+			tratamiento.setComprimidos(i*2);
+			tratamiento.setHoras(i*3);
+			tratamientos = new ArrayList<>();
+			tratamientos.add(tratamiento);
 			Usuario usuario = new Usuario();
-			usuario.setEmail("usuario"+i);
-			usuario.setPass("usuario");
+			usuario.setNombre("Nombre"+i);
+			usuario.setApellidos("Apellidos"+i);
+			usuario.setEmail("usuario"+i+"@gmail.com");
+			usuario.setPass("usuario"+i);
+			usuario.setMisTratamientos(tratamientos);
 			usuarios.add(usuario);
 		}
-		
 	}
-
 }

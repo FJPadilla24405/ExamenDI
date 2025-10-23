@@ -1,5 +1,8 @@
 package modelos;
 
+/**
+ * Clase que representa un medicamento
+ */
 public class Medicamento {
 	
 	private String nombre;
@@ -7,6 +10,7 @@ public class Medicamento {
 	private String descripcion;
 	private TipoMedicamento tipo;
 	
+	public Medicamento() {};
 	
 	public Medicamento(String nombre, String laboratorio, TipoMedicamento tipo,  String descripcion) {
 		super();
